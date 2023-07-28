@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pull') {
+            steps {
+                echo 'Cloning the code'
+                git url: "https://github.com/tvanluanst/app-jenkins.git", branch: "master"
+            }
+        }
+        stage('Build backend') {
+            steps {
+                dir('backend')  {
+                    echo 'Build backend'
+                    sh 'composer install'
+                    sh 'cp .env.example .env'
+
+                }
+            }
+        }
+        stage('Build frontend') {
+            steps {
+                dir('frontend')  {
+                    echo 'Build frontend'
+                    sh 'npm install'
+                }
+            }
+        }
+        stage('Testing backend') {
+            steps {
+                sh './backend/vendor/bin/phpunit'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'This is Build Stage'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying container'
+            }
+        }
+    }
+
+     post {
+        success {
+            cleanWs()
+        }
+    }
+}
