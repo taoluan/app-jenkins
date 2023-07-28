@@ -18,18 +18,22 @@ pipeline {
                 }
             }
         }
-        stage('Build frontend') {
-            steps {
-                dir('frontend')  {
-                    echo 'Build frontend'
-                    sh 'npm install'
-                }
-            }
-        }
+//         stage('Build frontend') {
+//             steps {
+//                 dir('frontend')  {
+//                     echo 'Build frontend'
+//                     sh 'npm install'
+//                 }
+//             }
+//         }
         stage('Testing backend') {
-            steps {
-                sh './backend/vendor/bin/phpunit'
+           dir('backend')  {
+                echo 'Build backend'
+                sh '.vendor/bin/phpunit'
             }
+//             steps {
+//                 sh './backend/vendor/bin/phpunit'
+//             }
         }
         stage('Build') {
             steps {
