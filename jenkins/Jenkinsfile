@@ -18,14 +18,14 @@ pipeline {
                 }
             }
         }
-//         stage('Build frontend') {
-//             steps {
-//                 dir('frontend')  {
-//                     echo 'Build frontend'
-//                     sh 'npm install'
-//                 }
-//             }
-//         }
+        stage('Build frontend') {
+            steps {
+                dir('frontend')  {
+                    echo 'Build frontend'
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Testing backend') {
            dir('backend')  {
                 echo 'Build backend'
