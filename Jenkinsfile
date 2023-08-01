@@ -10,7 +10,7 @@ pipeline {
         stage('Check Branch') {
             steps {
                 script {
-                    echo "Branch: ${env.GIT_BRANCH}"
+                    echo "Branch1: ${sh(script:'git name-rev --name-only HEAD')}"
                     echo "Branch: ${env.FULL_PATH_BRANCH}"
                 }
             }
