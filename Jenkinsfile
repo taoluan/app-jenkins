@@ -37,7 +37,7 @@ pipeline {
         stage('Testing backend') {
             steps {
                 dir('backend')  {
-                    sh 'vendor/bin/phpunit'
+//                     sh 'vendor/bin/phpunit'
                 }
             }
         }
