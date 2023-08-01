@@ -12,12 +12,12 @@ pipeline {
                 script {
                     echo "Branch: ${env.GIT_BRANCH}"
                     echo "Branch: ${env.FULL_PATH_BRANCH}"
-                    if (env.BRANCH_NAME == 'develop') {
-                        currentBuild.result = 'SUCCESS'
-                    } else {
-                        echo "Branch is not 'develop'. Skipping the pipeline."
-                        currentBuild.result = 'ABORTED'
-                    }
+//                     if (env.BRANCH_NAME == 'develop') {
+//                         currentBuild.result = 'SUCCESS'
+//                     } else {
+//                         echo "Branch is not 'develop'. Skipping the pipeline."
+//                         currentBuild.result = 'ABORTED'
+//                     }
                 }
             }
         }
