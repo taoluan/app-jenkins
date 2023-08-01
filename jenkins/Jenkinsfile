@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Pull') {
             steps {
-                echo "Cloning the code 1"
+                echo "Cloning the code"
                 git url: "https://github.com/tvanluanst/app-jenkins.git", branch: "master"
             }
         }
