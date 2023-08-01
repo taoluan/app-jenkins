@@ -19,8 +19,8 @@ pipeline {
             steps {
                 dir('backend')  {
                     echo 'Build backend'
-                    sh 'composer install'
-                    sh 'cp .env.example .env'
+//                     sh 'composer install'
+//                     sh 'cp .env.example .env'
 
                 }
             }
@@ -29,8 +29,8 @@ pipeline {
             steps {
                 dir('frontend')  {
                     echo 'Build frontend'
-                    sh 'npm install'
-                    sh 'npm run build'
+//                     sh 'npm install'
+//                     sh 'npm run build'
                 }
             }
         }
