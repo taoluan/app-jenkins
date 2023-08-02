@@ -19,8 +19,8 @@ pipeline {
             steps {
                 dir('backend')  {
                     echo 'Build backend'
-//                     sh 'composer install'
-//                     sh 'cp .env.example .env'
+                    sh 'composer install'
+                    sh 'cp .env.example .env'
 
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
         stage('Testing backend') {
             steps {
                 dir('backend')  {
-//                     sh 'vendor/bin/phpunit'
+                    sh 'vendor/bin/phpunit'
                 }
             }
         }
