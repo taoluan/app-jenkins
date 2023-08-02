@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import TheWelcome from '../components/TheWelcome.vue'
-const t:number = 1;
 </script>
 
 <template>
