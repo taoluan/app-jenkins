@@ -36,7 +36,7 @@
                 </div>
             @endif
             <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrLH12rLjQL3QDt7UCoA2tB-nXb0iR4gdx2w&usqp=CAU" alt="anh nong" /></div>
-            <!-- <div><img src="https://img.freepik.com/free-vector/cute-bee-flying-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector_138676-6016.jpg" alt="anh nong" /></div> -->
+            <div><img src="https://img.freepik.com/free-vector/cute-bee-flying-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector_138676-6016.jpg" alt="anh nong" /></div>
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
