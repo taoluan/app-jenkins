@@ -1,32 +1,15 @@
 pipeline {
     agent any
     environment {
-        SECRET_FILE_PATH = credentials('remote')
         FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
         GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
     }
-
     stages {
         stage('Check Branch') {
             steps {
                 script {
                     echo "Branch: ${env.GIT_BRANCH}"
                     echo "Branch: ${env.FULL_PATH_BRANCH}"
-                    if (env.BRANCH_NAME == 'develop') {
-                        currentBuild.result = 'SUCCESS'
-                    } else {
-                        echo "Branch is not 'develop'. Skipping the pipeline."
-                        currentBuild.result = 'ABORTED'
-                    }
-                }
-            }
-        }
-        stage('Read Secret File') {
-            steps {
-                script {
-                    def secretFileContent = readFile file: env.SECRET_FILE_PATH
-
-                    echo "Secret file contents: ${secretFileContent}"
                 }
             }
         }
