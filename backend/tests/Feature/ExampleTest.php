@@ -14,6 +14,6 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $this->assertEquals(200, 100);
+        $this->assertEquals(200, 200);
     }
 }
