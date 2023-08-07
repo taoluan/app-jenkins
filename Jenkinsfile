@@ -57,6 +57,8 @@ pipeline {
         }
         success {
             slackSend( channel: "#demo", color: "good", message: "Build thành công rồi bà con ơi")
+        }
+        always { 
             cleanWs()
         }
     }
