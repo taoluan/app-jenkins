@@ -1,37 +1,42 @@
 pipeline {
     agent any
     environment {
-        FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
-        GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
+        BRANCH_BUILD = "cdb-test"
+        BACK_END_DIR = "${WORKSPACE}/backend"
+        FRONT_END_DIR = "${WORKSPACE}/frontend"
     }
     stages {
-        stage('Check Branch') {
-            steps {
-                script {
-                    echo "Branch: ${env.GIT_BRANCH}"
-                    echo "Branch: ${env.FULL_PATH_BRANCH}"
-                }
-            }
-        }
-        stage('Pull') {
+        stage('Clone code') {
             steps {
                 echo "Cloning the code"
-                git url: "https://github.com/tvanluanst/app-jenkins.git", branch: "master"
+                echo "Workspace Path: ${WORKSPACE}"
+                git url: "https://github.com/taoluan/app-jenkins.git", branch: env.BRANCH_BUILD
             }
         }
         stage('Build backend') {
+            agent {
+                docker { 
+                    image 'composer:1.10.1' 
+                    args '-u 0:0 -v /tmp:/root/.cache'
+                }
+            }
             steps {
-                dir('backend')  {
+                dir(env.BACK_END_DIR) {
                     echo 'Build backend'
                     sh 'composer install'
                     sh 'cp .env.example .env'
-
                 }
             }
         }
         stage('Build frontend') {
+            agent {
+                docker { 
+                    image 'node:16.20.1'
+                    args '-u 0:0 -v /tmp:/root/.cache'
+                }
+            }
             steps {
-                dir('frontend')  {
+                dir(env.FRONT_END_DIR)  {
                     echo 'Build frontend'
                     sh 'npm install'
                     sh 'npm run build'
@@ -40,34 +45,24 @@ pipeline {
         }
         stage('Testing backend') {
             steps {
-                dir('backend')  {
+                dir(env.BACK_END_DIR)  {
                     sh 'vendor/bin/phpunit'
                 }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...11111'
+                dir('/var/scripts') {
+                    sh "./deploy_production.sh ${env.BRANCH_BUILD}"
+                }
+                echo 'Deploying'
+               
             }
         }
     }
-     post {
-        failure {
-            slackSend( channel: "#demo", color: "danger", message: "${messageFail()}")
-        }
-        success {
-            slackSend( channel: "#demo", color: "good", message: "Build thành công rồi bà con ơi")
+    post { 
+        always { 
             cleanWs()
         }
     }
-}
-
-def messageFail()
-{
-  def JENKINS_URL= env.BUILD_URL
-  def JOB_NAME = env.JOB_NAME
-  def BUILD_ID= env.BUILD_ID
-  def JENKINS_LOG= " FAILED: Job [${env.JOB_NAME}] Logs path: ${JENKINS_URL}/consoleText"
-  return JENKINS_LOG
-
 }
