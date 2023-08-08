@@ -10,7 +10,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('Scan') {
-            sh "sonar-scanner -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
+            sh "sonar-scanner -Dsonar.projectKey=jenkins-sonar -Dsonar.projectName='jenkins'"
         }
       }
     }
