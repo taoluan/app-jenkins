@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    MVN_HOME = tool name: 'Maven-3.6.3', type: 'hudson.tasks.Maven$MavenInstallation'
+    MVN_HOME = "Maven 3.6"
   }
   stages {
     stage('SCM') {
