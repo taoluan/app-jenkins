@@ -1,7 +1,7 @@
 pipeline {
   agent any
-  environment {
-    MVN_HOME = tool 'Default Maven'
+  tools {
+    maven 'Maven-3.6.3' // Use the correct tool name
   }
   stages {
     stage('SCM') {
@@ -12,9 +12,8 @@ pipeline {
 
     stage('SonarQube Analysis') {
       steps {
-        echo "MVN_HOME: ${MVN_HOME}"
         withSonarQubeEnv('Scan') {
-          sh "${MVN_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
+            sh "${tool name: 'Maven-3.6.3', type: 'hudson.tasks.Maven$MavenInstallation'}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
         }
       }
     }
