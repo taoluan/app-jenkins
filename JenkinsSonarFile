@@ -1,6 +1,8 @@
 pipeline {
   agent any
-
+  environment {
+    MVN_HOME = tool 'Default Maven'
+  }
   stages {
     stage('SCM') {
       steps {
@@ -9,10 +11,8 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
-      environment {
-        MVN_HOME = tool 'Default Maven'
-      }
       steps {
+        echo "MVN_HOME: ${MVN_HOME}"
         withSonarQubeEnv('Scan') {
           sh "${MVN_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
         }
