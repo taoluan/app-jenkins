@@ -1,13 +1,22 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Scan') {
-            steps {
-                withSonarQubeEnv(installationName: 'jenkins-sonar') {
-                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-                }
-            }
-        }
+  stages {
+    stage('SCM') {
+      steps {
+        checkout scm
+      }
     }
+
+    stage('SonarQube Analysis') {
+      environment {
+        MVN_HOME = tool 'Default Maven'
+      }
+      steps {
+        withSonarQubeEnv('Scan') {
+          sh "${MVN_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
+        }
+      }
+    }
+  }
 }
