@@ -8,7 +8,7 @@
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>http://192.168.88.41:9001/</groupId>
+	<groupId>jenkins</groupId>
 	<artifactId>jenkins</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jenkins</name>
