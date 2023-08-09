@@ -14,14 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    312313
-    $r
-    return view('welcome');
-    return view('welcome');
-    return view('welcome');
-    return view('welcome');
-    return view('welcome');
-    return view('welcome');
-    return view('welcome');
     return view('welcome');
 });
