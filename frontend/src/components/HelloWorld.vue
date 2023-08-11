@@ -1,7 +1,11 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   msg: string
 }>()
+const clickTest = () => {
+  console.log("@!31321");
+  props.msg = 1231321;
+}
 </script>
 
 <template>
@@ -11,6 +15,7 @@ defineProps<{
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
+      <button @click="clickTest">test hehui</button>
     </h3>
   </div>
 </template>
