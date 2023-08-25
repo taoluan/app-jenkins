@@ -22,10 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     // // Tạo kết nối đến cơ sở dữ liệu
     // $conn = new mysqli($servername, $username, $password, $dbname);
-    // $target = -5;
-    // $num = 3;
-    // $target =- $num; 
-    // $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
     // $resultAnd = true and false; 
     // $userInput = $_GET['username'];
     // // Sanitize user input to prevent SQL injection
