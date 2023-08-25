@@ -16,9 +16,6 @@ class Controller extends BaseController
     }
 
     public function foo($a) { // Noncompliant, function will return "true" or null
-        if ($a == 1) {
-          return true;
-        }
-        return;
+        $curl = 21313;
       }
 }
