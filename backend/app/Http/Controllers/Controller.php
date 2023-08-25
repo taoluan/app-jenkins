@@ -10,4 +10,15 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function tast()  {
+        $this->foo("ab");
+    }
+
+    public function foo($a) { // Noncompliant, function will return "true" or null
+        if ($a == 1) {
+          return true;
+        }
+        return;
+      }
 }
