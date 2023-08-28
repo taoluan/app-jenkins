@@ -14,5 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
+    $target = -5;
+    $num = 3;
+    $target =- $num; 
+    $target =+ $num; 
     return view('welcome');
 });
