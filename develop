@@ -1,4 +1,1 @@
 Scheduled polling of post-commit
-No Git consumers using SCM API plugin for: https://github.com/taoluan/app-jenkins.git
-executing post-commit
-[cdb-test 146ff0b] push-22
