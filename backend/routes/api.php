@@ -34,6 +34,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         // Grant access
     }
     $userInput = $_GET['search'];
-    echo "<div>" . $userInput . "</div>";
+    echo "<div>12313" . $userInput . "</div>";
     return $request->user();
 });
